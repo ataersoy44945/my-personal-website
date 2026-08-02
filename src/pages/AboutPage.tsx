@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { PageHeader } from '../components/PageHeader'
 
 export function AboutPage() {
@@ -10,7 +11,13 @@ export function AboutPage() {
       />
 
       <div className="about-grid">
-        <article className="about-block">
+        <motion.article
+          className="about-block card-glow"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+        >
           <h2>Kimim?</h2>
           <p>
             Ben Ata Ersoy. İstanbul Kültür Üniversitesi’nde Bilgisayar
@@ -34,16 +41,22 @@ export function AboutPage() {
               <span>Kick / YouTube — fatalstrokelive</span>
             </div>
           </div>
-        </article>
+        </motion.article>
 
-        <article className="about-block">
+        <motion.article
+          className="about-block card-glow"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: 0.08 }}
+        >
           <h2>Ne yapıyorum?</h2>
           <p>
             GitHub’da kuyumculuk sitelerinden yönetim sistemlerine, AI chatbot’tan
             oyun kimliği sitelerine kadar çeşitli projeler geliştiriyorum. Amacım
             temiz arayüzler, çalışan ürünler ve sürdürülebilir kod üretmek.
           </p>
-        </article>
+        </motion.article>
       </div>
     </section>
   )

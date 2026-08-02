@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { PageHeader } from '../components/PageHeader'
 import { stackGroups } from '../data/stack'
 
@@ -11,8 +12,16 @@ export function StackPage() {
       />
 
       <div className="stack-grid">
-        {stackGroups.map((group) => (
-          <article key={group.title} className="stack-card">
+        {stackGroups.map((group, index) => (
+          <motion.article
+            key={group.title}
+            className="stack-card card-glow"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.07 }}
+            whileHover={{ y: -4 }}
+          >
             <h2>{group.title}</h2>
             <div className="chip-row">
               {group.items.map((item) => (
@@ -21,7 +30,7 @@ export function StackPage() {
                 </span>
               ))}
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
     </section>

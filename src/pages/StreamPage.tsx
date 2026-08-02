@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { PageHeader } from '../components/PageHeader'
 import { socials, streamLinks } from '../data/socials'
 
@@ -14,18 +15,23 @@ export function StreamPage() {
         description="Kick’te canlı yayındayım. YouTube’da da içerik paylaşıyorum."
       />
 
-      <div className="stream-hero">
+      <motion.div
+        className="stream-hero card-glow"
+        initial={{ opacity: 0, y: 18, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         <span className="live-dot">
           <i /> Canlıya hazır
         </span>
-        <h2>fatalstrokelive</h2>
+        <h2 className="accent-text">fatalstrokelive</h2>
         <p>
           Oyun, sohbet ve canlı içerik. Yayınlarımı Kick hesabımdan takip
           edebilir, arşiv ve videolar için YouTube’a uğrayabilirsin.
         </p>
         <div className="stream-actions">
           <a
-            className="btn btn-primary"
+            className="btn btn-primary btn-shine"
             href={streamLinks.kick}
             target="_blank"
             rel="noreferrer"
@@ -49,21 +55,26 @@ export function StreamPage() {
             fatalstroke.com
           </a>
         </div>
-      </div>
+      </motion.div>
 
       <div className="stream-channels">
-        {channels.map((channel) => (
-          <a
+        {channels.map((channel, index) => (
+          <motion.a
             key={channel.id}
-            className="channel-card"
+            className="channel-card card-glow"
             href={channel.href}
             target="_blank"
             rel="noreferrer"
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.07 }}
+            whileHover={{ y: -4 }}
           >
             <strong>{channel.label}</strong>
             <span>{channel.handle}</span>
             <span>{channel.description}</span>
-          </a>
+          </motion.a>
         ))}
       </div>
     </section>

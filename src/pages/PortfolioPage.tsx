@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { PageHeader } from '../components/PageHeader'
 import {
   categories,
@@ -39,42 +39,47 @@ export function PortfolioPage() {
       </div>
 
       <div className="project-grid">
-        {filtered.map((project, index) => (
-          <motion.article
-            key={project.id}
-            className="project-card"
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.28) }}
-          >
-            <div className="project-top">
-              <div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
+        <AnimatePresence mode="popLayout">
+          {filtered.map((project, index) => (
+            <motion.article
+              key={project.id}
+              className="project-card card-glow"
+              layout
+              initial={{ opacity: 0, y: 16, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.24) }}
+              whileHover={{ y: -5 }}
+            >
+              <div className="project-top">
+                <div>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                </div>
+                <span className="badge">{project.category}</span>
               </div>
-              <span className="badge">{project.category}</span>
-            </div>
 
-            <div className="tag-row">
-              {project.tags.map((tag) => (
-                <span key={tag} className="tag">
-                  {tag}
-                </span>
-              ))}
-            </div>
+              <div className="tag-row">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
 
-            <div className="project-actions">
-              <a href={project.github} target="_blank" rel="noreferrer">
-                GitHub →
-              </a>
-              {project.live ? (
-                <a href={project.live} target="_blank" rel="noreferrer">
-                  Canlı site →
+              <div className="project-actions">
+                <a href={project.github} target="_blank" rel="noreferrer">
+                  GitHub →
                 </a>
-              ) : null}
-            </div>
-          </motion.article>
-        ))}
+                {project.live ? (
+                  <a href={project.live} target="_blank" rel="noreferrer">
+                    Canlı site →
+                  </a>
+                ) : null}
+              </div>
+            </motion.article>
+          ))}
+        </AnimatePresence>
       </div>
     </section>
   )
