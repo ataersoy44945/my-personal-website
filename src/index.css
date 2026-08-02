@@ -104,6 +104,7 @@ img {
 .eyebrow {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.55rem;
   font-size: 0.72rem;
   font-weight: 600;
@@ -162,12 +163,13 @@ img {
 }
 
 .page {
-  padding: 2rem 0 4rem;
+  padding: 3.5rem 0 4.5rem;
 }
 
 .page-header {
-  margin-bottom: 2rem;
+  margin: 0 auto 2.5rem;
   max-width: 42rem;
+  text-align: center;
 }
 
 .page-header h1 {
@@ -179,9 +181,10 @@ img {
 }
 
 .page-header p {
-  margin: 0;
+  margin: 0 auto;
   color: var(--muted);
   font-size: 1rem;
+  max-width: 36rem;
 }
 
 .site-header {
@@ -319,10 +322,12 @@ img {
 
 .footer-inner {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   color: var(--muted);
   font-size: 0.88rem;
 }
@@ -330,6 +335,7 @@ img {
 .footer-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.85rem;
 }
 
@@ -344,7 +350,8 @@ img {
   min-height: calc(100svh - 4rem);
   display: grid;
   align-items: center;
-  padding: 2.5rem 0 3rem;
+  justify-items: center;
+  padding: 3rem 0;
   overflow: hidden;
   isolation: isolate;
   background:
@@ -358,11 +365,17 @@ img {
   position: relative;
   z-index: 1;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-content {
   width: 100%;
   max-width: 40rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-brand {
@@ -398,7 +411,10 @@ img {
 .hero-actions {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
   gap: 0.7rem;
+  width: min(100%, 22rem);
 }
 
 .hero-actions .btn {
@@ -406,16 +422,19 @@ img {
 }
 
 .explore {
-  padding: 0.5rem 0 4rem;
+  padding: 3.5rem 0 4.5rem;
 }
 
 .explore-head {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.75rem;
-  align-items: end;
-  margin-bottom: 1.25rem;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto 2rem;
+  max-width: 40rem;
 }
 
 .explore-head h2 {
@@ -428,6 +447,8 @@ img {
 .explore-grid {
   display: grid;
   gap: 0.75rem;
+  max-width: 900px;
+  margin-inline: auto;
 }
 
 .explore-card {
@@ -435,7 +456,8 @@ img {
   grid-template-columns: 1fr auto;
   gap: 0.85rem;
   align-items: center;
-  padding: 1.15rem 1.2rem;
+  text-align: left;
+  padding: 1.25rem 1.3rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: linear-gradient(160deg, rgba(34, 28, 23, 0.9), rgba(26, 22, 18, 0.6));
@@ -484,13 +506,16 @@ img {
 .about-grid {
   display: grid;
   gap: 1rem;
+  max-width: 900px;
+  margin-inline: auto;
 }
 
 .about-block {
-  padding: 1.25rem;
+  padding: 1.5rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(26, 22, 18, 0.65);
+  text-align: center;
 }
 
 .about-block h2 {
@@ -514,9 +539,11 @@ img {
 .meta-row {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.2rem;
   padding-top: 0.75rem;
   border-top: 1px solid var(--line);
+  text-align: center;
 }
 
 .meta-row strong {
@@ -531,8 +558,10 @@ img {
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.45rem;
-  margin-bottom: 1.25rem;
+  margin: 0 auto 1.75rem;
+  max-width: 900px;
 }
 
 .filter-btn {
@@ -564,15 +593,18 @@ img {
 .project-grid {
   display: grid;
   gap: 0.8rem;
+  max-width: 900px;
+  margin-inline: auto;
 }
 
 .project-card {
   display: grid;
   gap: 0.9rem;
-  padding: 1.2rem;
+  padding: 1.35rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(26, 22, 18, 0.65);
+  text-align: center;
   transition:
     border-color 0.25s ease,
     transform 0.25s ease;
@@ -585,10 +617,11 @@ img {
 
 .project-top {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   gap: 0.65rem;
-  align-items: start;
+  align-items: center;
 }
 
 .project-card h3 {
@@ -620,6 +653,7 @@ img {
 .tag-row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.35rem;
 }
 
@@ -634,6 +668,7 @@ img {
 .project-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.6rem;
 }
 
@@ -651,13 +686,16 @@ img {
 .stack-grid {
   display: grid;
   gap: 0.8rem;
+  max-width: 900px;
+  margin-inline: auto;
 }
 
 .stack-card {
-  padding: 1.2rem;
+  padding: 1.35rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(26, 22, 18, 0.65);
+  text-align: center;
 }
 
 .stack-card h2 {
@@ -669,6 +707,7 @@ img {
 .chip-row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.45rem;
 }
 
@@ -685,7 +724,11 @@ img {
 .stream-hero {
   display: grid;
   gap: 1rem;
-  padding: 1.4rem;
+  justify-items: center;
+  text-align: center;
+  padding: 1.75rem 1.4rem;
+  max-width: 900px;
+  margin-inline: auto;
   border-radius: calc(var(--radius) + 4px);
   border: 1px solid rgba(255, 106, 26, 0.28);
   background:
@@ -701,7 +744,7 @@ img {
 }
 
 .stream-hero p {
-  margin: 0;
+  margin: 0 auto;
   color: var(--muted);
   max-width: 36rem;
 }
@@ -709,8 +752,11 @@ img {
 .stream-actions {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
   gap: 0.65rem;
   margin-top: 0.35rem;
+  width: min(100%, 22rem);
 }
 
 .stream-actions .btn {
@@ -720,6 +766,7 @@ img {
 .live-dot {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.45rem;
   font-size: 0.78rem;
   font-weight: 700;
@@ -740,13 +787,16 @@ img {
 .stream-channels {
   display: grid;
   gap: 0.75rem;
-  margin-top: 1.25rem;
+  margin: 1.75rem auto 0;
+  max-width: 900px;
 }
 
 .channel-card {
   display: grid;
   gap: 0.3rem;
-  padding: 1.15rem 1.2rem;
+  justify-items: center;
+  text-align: center;
+  padding: 1.25rem 1.2rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(26, 22, 18, 0.65);
@@ -771,12 +821,16 @@ img {
 .contact-grid {
   display: grid;
   gap: 0.75rem;
+  max-width: 900px;
+  margin-inline: auto;
 }
 
 .contact-card {
   display: grid;
   gap: 0.3rem;
-  padding: 1.2rem;
+  justify-items: center;
+  text-align: center;
+  padding: 1.35rem 1.2rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(26, 22, 18, 0.65);
@@ -833,21 +887,13 @@ img {
   .stream-actions {
     flex-direction: row;
     flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
   }
 
   .hero-actions .btn,
   .stream-actions .btn {
     width: auto;
-  }
-
-  .meta-row {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.4rem 1rem;
-  }
-
-  .meta-row strong {
-    min-width: 7rem;
   }
 }
 
@@ -866,11 +912,11 @@ img {
   }
 
   .page {
-    padding: 2.5rem 0 5rem;
+    padding: 4rem 0 5rem;
   }
 
   .page-header {
-    margin-bottom: 2.5rem;
+    margin: 0 auto 2.75rem;
   }
 
   .explore-grid {
@@ -878,11 +924,7 @@ img {
   }
 
   .about-grid {
-    grid-template-columns: 1.2fr 0.8fr;
-  }
-
-  .about-block {
-    padding: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .project-grid {
@@ -900,7 +942,14 @@ img {
 
   .hero {
     align-items: center;
-    padding: 3rem 0 4rem;
+    justify-items: center;
+    padding: 3rem 0;
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
   }
 }
 
@@ -910,7 +959,7 @@ img {
   }
 
   .explore-grid .explore-card:first-child {
-    grid-column: span 2;
+    grid-column: span 1;
   }
 
   .project-grid {
