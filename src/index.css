@@ -445,10 +445,22 @@ img {
 }
 
 .explore-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.75rem;
   max-width: 900px;
   margin-inline: auto;
+}
+
+.explore-grid > * {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+.explore-grid > * > .explore-card {
+  height: 100%;
+  width: 100%;
 }
 
 .explore-card {
@@ -919,8 +931,9 @@ img {
     margin: 0 auto 2.75rem;
   }
 
-  .explore-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .explore-grid > * {
+    flex: 1 1 calc(50% - 0.4rem);
+    max-width: calc(50% - 0.4rem);
   }
 
   .about-grid {
@@ -954,12 +967,9 @@ img {
 }
 
 @media (min-width: 980px) {
-  .explore-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .explore-grid .explore-card:first-child {
-    grid-column: span 1;
+  .explore-grid > * {
+    flex: 1 1 calc(33.333% - 0.55rem);
+    max-width: calc(33.333% - 0.55rem);
   }
 
   .project-grid {
