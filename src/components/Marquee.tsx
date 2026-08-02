@@ -1,11 +1,13 @@
 const items = [
+  'Game Dev',
   'FatalStroke Live',
-  'Kick',
-  'YouTube',
-  'Web Dev',
-  'React',
   'TypeScript',
+  'React',
+  'Next.js',
   'Python',
+  'React Native',
+  'Kick',
+  'Ship Products',
   'İstanbul',
 ]
 

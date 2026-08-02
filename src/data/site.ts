@@ -27,8 +27,8 @@ export const site = {
 
 export const statusConfig = {
   activity: {
-    tr: 'Kod yazıyor & yayın planlıyor',
-    en: 'Coding & planning streams',
+    tr: 'Yeni oyunlar geliştiriyor · ürün üretiyor',
+    en: 'Building new games · shipping products',
   },
   location: {
     tr: 'İstanbul',

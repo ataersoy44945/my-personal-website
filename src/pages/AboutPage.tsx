@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion'
 import { PageHeader } from '../components/PageHeader'
 import { site } from '../data/site'
+import { socials } from '../data/socials'
 import { useLanguage } from '../i18n/LanguageContext'
 
 export function AboutPage() {
   const { t } = useLanguage()
+  const instagram = socials.find((s) => s.id === 'instagram')
 
   return (
     <section className="page shell">
@@ -35,7 +37,13 @@ export function AboutPage() {
           </picture>
           <div className="about-photo-meta">
             <strong>{site.name}</strong>
-            <span>@{site.handle}</span>
+            {instagram ? (
+              <a href={instagram.href} target="_blank" rel="noreferrer">
+                {instagram.handle}
+              </a>
+            ) : (
+              <span>@ata44945</span>
+            )}
           </div>
         </motion.div>
 
@@ -76,6 +84,26 @@ export function AboutPage() {
             <h2>{t.about.whatTitle}</h2>
             <p>{t.about.whatBody}</p>
           </motion.article>
+        </div>
+      </div>
+
+      <div className="about-highlights">
+        <h2 className="about-highlights-title">{t.about.highlightsTitle}</h2>
+        <div className="highlights-grid">
+          {t.about.highlights.map((item, index) => (
+            <motion.article
+              key={item.title}
+              className="highlight-item"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.06 }}
+            >
+              <span className="strength-index">0{index + 1}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

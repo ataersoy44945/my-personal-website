@@ -10,19 +10,20 @@ export const stackGroups: StackGroup[] = [
   },
   {
     title: { tr: 'Framework & Kütüphane', en: 'Frameworks & Libraries' },
-    items: ['React', 'Next.js', 'React Native', 'Node.js'],
+    items: ['React', 'Next.js', 'React Native', 'Node.js', 'Framer Motion'],
   },
   {
     title: { tr: 'Araçlar', en: 'Tools' },
-    items: ['Git', 'GitHub', 'VS Code', 'Vite', 'Tailwind CSS'],
+    items: ['Git', 'GitHub', 'VS Code', 'Vite', 'Tailwind CSS', 'Netlify'],
   },
   {
     title: { tr: 'Odak Alanları', en: 'Focus areas' },
     items: [
-      'Web geliştirme',
+      'Oyun geliştirme',
+      'Ürün odaklı web',
       'Mobil uygulamalar',
       'Nesne tabanlı tasarım',
-      'Yayın & içerik',
+      'Yayın & marka',
     ],
   },
 ]

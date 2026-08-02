@@ -122,6 +122,38 @@ export function HomePage() {
 
       <Marquee />
 
+      <section className="strengths shell">
+        <motion.div
+          className="explore-head"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.45 }}
+        >
+          <div>
+            <span className="eyebrow">{t.home.strengthsEyebrow}</span>
+            <h2>{t.home.strengthsTitle}</h2>
+          </div>
+        </motion.div>
+
+        <div className="strengths-grid">
+          {t.home.strengths.map((item, index) => (
+            <motion.article
+              key={item.title}
+              className="strength-item"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.4, delay: index * 0.07 }}
+            >
+              <span className="strength-index">0{index + 1}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </motion.article>
+          ))}
+        </div>
+      </section>
+
       <section className="explore shell">
         <motion.div
           className="explore-head"
