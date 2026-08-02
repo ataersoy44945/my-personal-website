@@ -1,3 +1,4 @@
+import { useRef, type PointerEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { exploreItems } from '../data/explore'
@@ -10,15 +11,47 @@ const name = ['Ata', ' ', 'Ersoy'] as const
 
 export function HomePage() {
   const { t } = useLanguage()
+  const ambientRef = useRef<HTMLDivElement>(null)
+  const brandRef = useRef<HTMLHeadingElement>(null)
+
+  const onParallax = (e: PointerEvent<HTMLElement>) => {
+    const ambient = ambientRef.current
+    if (!ambient) return
+    if (window.matchMedia('(pointer: coarse)').matches) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const rect = e.currentTarget.getBoundingClientRect()
+    const px = (e.clientX - rect.left) / rect.width - 0.5
+    const py = (e.clientY - rect.top) / rect.height - 0.5
+
+    ambient.style.setProperty('--px', String(px))
+    ambient.style.setProperty('--py', String(py))
+
+    if (brandRef.current) {
+      brandRef.current.style.transform = `perspective(900px) rotateX(${py * -4}deg) rotateY(${px * 5}deg) translateZ(0)`
+    }
+  }
+
+  const resetParallax = () => {
+    ambientRef.current?.style.setProperty('--px', '0')
+    ambientRef.current?.style.setProperty('--py', '0')
+    if (brandRef.current) brandRef.current.style.transform = ''
+  }
 
   return (
     <>
-      <section className="hero">
-        <div className="hero-ambient" aria-hidden="true">
+      <section
+        className="hero"
+        onPointerMove={onParallax}
+        onPointerLeave={resetParallax}
+      >
+        <div className="hero-ambient" ref={ambientRef} aria-hidden="true">
           <span className="hero-orb hero-orb-1" />
           <span className="hero-orb hero-orb-2" />
           <span className="hero-orb hero-orb-3" />
           <span className="hero-ring" />
+          <span className="hero-mesh" />
+          <span className="hero-beam" />
           <span className="hero-scan" />
         </div>
 
@@ -41,7 +74,7 @@ export function HomePage() {
               {t.home.eyebrow}
             </motion.span>
 
-            <h1 className="hero-brand">
+            <h1 className="hero-brand" ref={brandRef}>
               {name.map((part, i) =>
                 part === ' ' ? (
                   <span key="space" className="hero-space">
@@ -64,6 +97,7 @@ export function HomePage() {
                   </motion.span>
                 ),
               )}
+              <span className="hero-brand-line" aria-hidden="true" />
             </h1>
 
             <motion.p

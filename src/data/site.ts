@@ -1,7 +1,7 @@
 export const site = {
   name: 'Ata Ersoy',
   handle: 'fatalstrokelive',
-  email: 'ataersoy44945@gmail.com',
+  email: 'ataersoy1234@hotmail.com',
   discord: 'ata44945',
   /** Discord numeric user ID varsa profil linki çalışır */
   discordUserId: '',

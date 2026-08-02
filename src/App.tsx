@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { LanguageProvider } from './i18n/LanguageContext'
 import { KickLiveProvider } from './hooks/KickLiveContext'
 import { Layout } from './components/Layout'
@@ -10,6 +10,7 @@ import { PortfolioPage } from './pages/PortfolioPage'
 import { ProjectDetailPage } from './pages/ProjectDetailPage'
 import { StackPage } from './pages/StackPage'
 import { StreamPage } from './pages/StreamPage'
+import { NotFoundPage } from './pages/NotFoundPage'
 
 export default function App() {
   return (
@@ -26,7 +27,7 @@ export default function App() {
               <Route path="yayin" element={<StreamPage />} />
               <Route path="klipler" element={<ClipsPage />} />
               <Route path="iletisim" element={<ContactPage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </BrowserRouter>

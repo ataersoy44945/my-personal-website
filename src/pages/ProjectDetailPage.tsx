@@ -26,6 +26,10 @@ export function ProjectDetailPage() {
     )
   }
 
+  const related = projects
+    .filter((p) => p.id !== project.id && p.category === project.category)
+    .slice(0, 3)
+
   return (
     <section className="page shell">
       <Seo
@@ -50,6 +54,7 @@ export function ProjectDetailPage() {
             accent={project.accent}
             image={project.image}
             priority
+            variant="detail"
           />
         </div>
 
@@ -57,18 +62,6 @@ export function ProjectDetailPage() {
           <span className="badge">{t.categories[project.category]}</span>
           <h1>{project.title}</h1>
           <p className="project-detail-lead">{project.description[lang]}</p>
-
-          {project.longDescription ? (
-            <p className="project-detail-copy">{project.longDescription[lang]}</p>
-          ) : null}
-
-          <div className="tag-row">
-            {project.tags.map((tag) => (
-              <span key={tag} className="tag">
-                {tag}
-              </span>
-            ))}
-          </div>
 
           <div className="project-actions">
             <a
@@ -92,6 +85,91 @@ export function ProjectDetailPage() {
           </div>
         </div>
       </motion.div>
+
+      <div className="project-detail-sections">
+        <motion.article
+          className="project-section"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          <h2>{t.projects.overview}</h2>
+          <p>{project.longDescription[lang]}</p>
+        </motion.article>
+
+        <motion.article
+          className="project-section"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.04 }}
+        >
+          <h2>{t.projects.role}</h2>
+          <p>{project.role[lang]}</p>
+        </motion.article>
+
+        <motion.article
+          className="project-section"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.08 }}
+        >
+          <h2>{t.projects.features}</h2>
+          <ul className="project-feature-list">
+            {project.features.map((feature) => (
+              <li key={feature.tr}>{feature[lang]}</li>
+            ))}
+          </ul>
+        </motion.article>
+
+        <motion.article
+          className="project-section"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.12 }}
+        >
+          <h2>{t.projects.outcome}</h2>
+          <p>{project.outcome[lang]}</p>
+        </motion.article>
+
+        <motion.article
+          className="project-section"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.16 }}
+        >
+          <h2>{t.projects.tech}</h2>
+          <div className="tag-row">
+            {project.tags.map((tag) => (
+              <span key={tag} className="tag">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </motion.article>
+      </div>
+
+      {related.length > 0 ? (
+        <div className="project-related">
+          <h2>{t.projects.related}</h2>
+          <div className="project-related-grid">
+            {related.map((item) => (
+              <Link
+                key={item.id}
+                to={`/projeler/${item.id}`}
+                className="project-related-card"
+              >
+                <strong>{item.title}</strong>
+                <span>{item.description[lang]}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </section>
   )
 }

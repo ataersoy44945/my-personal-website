@@ -4,6 +4,7 @@ type ProjectCoverProps = {
   accent?: string
   image?: string
   priority?: boolean
+  variant?: 'card' | 'detail'
 }
 
 function toWebp(src: string) {
@@ -17,6 +18,7 @@ export function ProjectCover({
   accent = '#ff6a1a',
   image,
   priority = false,
+  variant = 'card',
 }: ProjectCoverProps) {
   const initials = title
     .split(/\s+/)
@@ -26,10 +28,11 @@ export function ProjectCover({
     .toUpperCase()
 
   const webp = image ? toWebp(image) : null
+  const isDetail = variant === 'detail'
 
   return (
     <div
-      className={`project-cover${image ? ' has-image' : ''}`}
+      className={`project-cover${image ? ' has-image' : ''}${isDetail ? ' is-detail' : ''}`}
       style={
         image
           ? undefined
@@ -62,7 +65,7 @@ export function ProjectCover({
           <span className="project-cover-grid" />
         </>
       )}
-      <span className="project-cover-cat">{category}</span>
+      {!isDetail ? <span className="project-cover-cat">{category}</span> : null}
       <span className="project-cover-shade" />
     </div>
   )

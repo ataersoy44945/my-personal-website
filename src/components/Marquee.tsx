@@ -11,19 +11,44 @@ const items = [
   'İstanbul',
 ]
 
-export function Marquee() {
-  const loop = [...items, ...items]
+const itemsB = [
+  'Oyun',
+  'Web',
+  'Mobil',
+  'OOP',
+  'Vite',
+  'Netlify',
+  'UI/UX',
+  'Yayın',
+  'Build',
+  'Ship',
+]
 
+function Track({
+  list,
+  reverse = false,
+}: {
+  list: string[]
+  reverse?: boolean
+}) {
+  const loop = [...list, ...list]
+  return (
+    <div className={`marquee-track${reverse ? ' reverse' : ''}`}>
+      {loop.map((item, i) => (
+        <span key={`${item}-${i}`} className="marquee-item">
+          {item}
+          <i />
+        </span>
+      ))}
+    </div>
+  )
+}
+
+export function Marquee() {
   return (
     <div className="marquee" aria-hidden="true">
-      <div className="marquee-track">
-        {loop.map((item, i) => (
-          <span key={`${item}-${i}`} className="marquee-item">
-            {item}
-            <i />
-          </span>
-        ))}
-      </div>
+      <Track list={items} />
+      <Track list={itemsB} reverse />
     </div>
   )
 }

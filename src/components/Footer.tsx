@@ -7,6 +7,7 @@ export function Footer() {
 
   return (
     <footer className="site-footer">
+      <div className="footer-aura" aria-hidden="true" />
       <div className="shell footer-inner">
         <p>{t.footer.replace('{year}', String(year))}</p>
         <div className="footer-links">

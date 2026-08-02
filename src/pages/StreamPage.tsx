@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { PageHeader } from '../components/PageHeader'
-import { Equalizer } from '../components/Equalizer'
+import { Equalizer, Waveform } from '../components/Equalizer'
 import { LiveBadge } from '../components/LiveBadge'
 import { socials, streamLinks } from '../data/socials'
 import { site } from '../data/site'
@@ -44,6 +44,7 @@ export function StreamPage() {
         <LiveBadge />
         <h2 className="accent-text">{site.handle}</h2>
         <p>{t.stream.body}</p>
+        <Waveform active={isLive} />
         <div className="stream-actions">
           <a
             className="btn btn-primary btn-shine"

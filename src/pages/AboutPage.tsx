@@ -87,6 +87,25 @@ export function AboutPage() {
         </div>
       </div>
 
+      <div className="story-strip">
+        <h2 className="about-highlights-title">{t.about.storyTitle}</h2>
+        <div className="story-grid">
+          {t.about.story.map((frame, index) => (
+            <motion.figure
+              key={frame.label}
+              className="story-frame"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.07 }}
+            >
+              <img src={frame.image} alt="" loading="lazy" decoding="async" />
+              <figcaption>{frame.label}</figcaption>
+            </motion.figure>
+          ))}
+        </div>
+      </div>
+
       <div className="about-highlights">
         <h2 className="about-highlights-title">{t.about.highlightsTitle}</h2>
         <div className="highlights-grid">

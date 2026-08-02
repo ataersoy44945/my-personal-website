@@ -76,6 +76,25 @@ export const translations = {
       focusValue: 'Oyun geliştirme · ürün mühendisliği · yayıncılık',
       stream: 'Marka',
       streamValue: 'FatalStroke Live — Kick / YouTube',
+      storyTitle: 'Hikâye kareleri',
+      story: [
+        {
+          label: 'Kod',
+          image: '/projects/datcia.jpg',
+        },
+        {
+          label: 'Yayın',
+          image: '/projects/fatalstroke.jpg',
+        },
+        {
+          label: 'Oyun',
+          image: '/projects/weather-ai.jpg',
+        },
+        {
+          label: 'Ata',
+          image: '/about.jpg',
+        },
+      ],
     },
     projects: {
       eyebrow: 'Projeler',
@@ -90,6 +109,13 @@ export const translations = {
       filters: 'Proje filtreleri',
       notFound: 'Proje bulunamadı.',
       notFoundDesc: 'Bu proje listede yok veya taşındı.',
+      role: 'Rolüm',
+      overview: 'Genel bakış',
+      features: 'Öne çıkanlar',
+      outcome: 'Sonuç',
+      tech: 'Teknolojiler',
+      related: 'Diğer işler',
+      links: 'Bağlantılar',
     },
     stack: {
       eyebrow: 'Stack',
@@ -236,6 +262,25 @@ export const translations = {
       focusValue: 'Game development · product engineering · streaming',
       stream: 'Brand',
       streamValue: 'FatalStroke Live — Kick / YouTube',
+      storyTitle: 'Story frames',
+      story: [
+        {
+          label: 'Code',
+          image: '/projects/datcia.jpg',
+        },
+        {
+          label: 'Stream',
+          image: '/projects/fatalstroke.jpg',
+        },
+        {
+          label: 'Games',
+          image: '/projects/weather-ai.jpg',
+        },
+        {
+          label: 'Ata',
+          image: '/about.jpg',
+        },
+      ],
     },
     projects: {
       eyebrow: 'Projects',
@@ -250,6 +295,13 @@ export const translations = {
       filters: 'Project filters',
       notFound: 'Project not found.',
       notFoundDesc: 'This project is missing or was moved.',
+      role: 'My role',
+      overview: 'Overview',
+      features: 'Highlights',
+      outcome: 'Outcome',
+      tech: 'Tech',
+      related: 'More work',
+      links: 'Links',
     },
     stack: {
       eyebrow: 'Stack',

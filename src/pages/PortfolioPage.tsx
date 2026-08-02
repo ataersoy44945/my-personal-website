@@ -13,11 +13,16 @@ import { useLanguage } from '../i18n/LanguageContext'
 export function PortfolioPage() {
   const { lang, t } = useLanguage()
   const [active, setActive] = useState<(typeof categories)[number]>('Tümü')
+  const [preview, setPreview] = useState<string | null>(null)
 
   const filtered = useMemo(() => {
     if (active === 'Tümü') return projects
     return projects.filter((p) => p.category === (active as ProjectCategory))
   }, [active])
+
+  const previewProject = preview
+    ? projects.find((p) => p.id === preview)
+    : null
 
   const labelFor = (cat: (typeof categories)[number]) => {
     if (cat === 'Tümü') return t.projects.all
@@ -59,6 +64,12 @@ export function PortfolioPage() {
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.24) }}
               whileHover={{ y: -5 }}
+              onMouseEnter={() => {
+                if (window.matchMedia('(pointer: fine)').matches) {
+                  setPreview(project.id)
+                }
+              }}
+              onMouseLeave={() => setPreview(null)}
             >
               <Link
                 to={`/projeler/${project.id}`}
@@ -107,6 +118,28 @@ export function PortfolioPage() {
           ))}
         </AnimatePresence>
       </div>
+
+      <AnimatePresence>
+        {previewProject?.image ? (
+          <motion.div
+            className="project-preview"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            aria-hidden="true"
+          >
+            <div
+              className="project-preview-bg"
+              style={{ backgroundImage: `url(${previewProject.image})` }}
+            />
+            <div className="project-preview-frame">
+              <img src={previewProject.image} alt="" />
+              <strong>{previewProject.title}</strong>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </section>
   )
 }

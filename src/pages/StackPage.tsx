@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { PageHeader } from '../components/PageHeader'
+import { StackConstellation } from '../components/StackConstellation'
 import { stackGroups } from '../data/stack'
 import { useLanguage } from '../i18n/LanguageContext'
 
@@ -13,6 +14,8 @@ export function StackPage() {
         title={t.stack.title}
         description={t.stack.description}
       />
+
+      <StackConstellation />
 
       <div className="stack-grid">
         {stackGroups.map((group, index) => (

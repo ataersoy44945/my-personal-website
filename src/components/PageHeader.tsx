@@ -18,6 +18,7 @@ export function PageHeader({ eyebrow, title, description }: PageHeaderProps) {
       <h1>
         <span className="title-glow">{title}</span>
       </h1>
+      <span className="page-header-rule" aria-hidden="true" />
       <p>{description}</p>
     </motion.header>
   )
