@@ -3,21 +3,34 @@ import { useEffect, useState } from 'react'
 import { LangSwitch } from './LangSwitch'
 import { LiveBadge } from './LiveBadge'
 import { useLanguage } from '../i18n/LanguageContext'
+import { useLocalizedPath } from '../hooks/useLocalizedPath'
+import { alternatePaths, normalizePath } from '../i18n/routes'
+
+function linkActive(pathname: string, to: string, end?: boolean) {
+  const current = normalizePath(pathname)
+  const alts = alternatePaths(to)
+  const candidates = [alts.tr, alts.en]
+  if (end) return candidates.includes(current)
+  return candidates.some(
+    (c) => current === c || (c !== '/' && current.startsWith(`${c}/`)),
+  )
+}
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const location = useLocation()
   const { t } = useLanguage()
+  const path = useLocalizedPath()
 
   const links = [
-    { to: '/', label: t.nav.home, end: true },
-    { to: '/hakkimda', label: t.nav.about },
-    { to: '/projeler', label: t.nav.projects },
-    { to: '/stack', label: t.nav.stack },
-    { to: '/yayin', label: t.nav.stream },
-    { to: '/klipler', label: t.nav.clips },
-    { to: '/iletisim', label: t.nav.contact },
+    { to: path('home'), label: t.nav.home, end: true },
+    { to: path('about'), label: t.nav.about },
+    { to: path('projects'), label: t.nav.projects },
+    { to: path('stack'), label: t.nav.stack },
+    { to: path('stream'), label: t.nav.stream },
+    { to: path('clips'), label: t.nav.clips },
+    { to: path('contact'), label: t.nav.contact },
   ]
 
   useEffect(() => {
@@ -41,10 +54,14 @@ export function Header() {
         <nav className="nav-links" aria-label="Main">
           {links.map((link) => (
             <NavLink
-              key={link.to}
+              key={link.to + link.label}
               to={link.to}
               end={link.end}
-              className={({ isActive }) => (isActive ? 'active' : undefined)}
+              className={() =>
+                linkActive(location.pathname, link.to, link.end)
+                  ? 'active'
+                  : undefined
+              }
             >
               {link.label}
             </NavLink>
@@ -72,10 +89,14 @@ export function Header() {
       >
         {links.map((link) => (
           <NavLink
-            key={link.to}
+            key={link.to + link.label}
             to={link.to}
             end={link.end}
-            className={({ isActive }) => (isActive ? 'active' : undefined)}
+            className={() =>
+              linkActive(location.pathname, link.to, link.end)
+                ? 'active'
+                : undefined
+            }
             onClick={() => setOpen(false)}
           >
             {link.label}

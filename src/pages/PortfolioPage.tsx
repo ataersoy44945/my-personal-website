@@ -9,9 +9,11 @@ import {
   type ProjectCategory,
 } from '../data/projects'
 import { useLanguage } from '../i18n/LanguageContext'
+import { useLocalizedPath } from '../hooks/useLocalizedPath'
 
 export function PortfolioPage() {
   const { lang, t } = useLanguage()
+  const path = useLocalizedPath()
   const [active, setActive] = useState<(typeof categories)[number]>('Tümü')
   const [preview, setPreview] = useState<string | null>(null)
 
@@ -72,7 +74,7 @@ export function PortfolioPage() {
               onMouseLeave={() => setPreview(null)}
             >
               <Link
-                to={`/projeler/${project.id}`}
+                to={path('projects', project.id)}
                 className="project-card-link"
                 aria-label={`${project.title} — ${t.projects.details}`}
               >
@@ -88,7 +90,7 @@ export function PortfolioPage() {
               <div className="project-top">
                 <div>
                   <h3>
-                    <Link to={`/projeler/${project.id}`}>{project.title}</Link>
+                    <Link to={path('projects', project.id)}>{project.title}</Link>
                   </h3>
                   <p>{project.description[lang]}</p>
                 </div>
@@ -104,7 +106,7 @@ export function PortfolioPage() {
               </div>
 
               <div className="project-actions">
-                <Link to={`/projeler/${project.id}`}>{t.projects.details}</Link>
+                <Link to={path('projects', project.id)}>{t.projects.details}</Link>
                 <a href={project.github} target="_blank" rel="noreferrer">
                   {t.projects.github}
                 </a>

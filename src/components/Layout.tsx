@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Header } from './Header'
@@ -8,23 +9,32 @@ import { PageWipe } from './PageWipe'
 import { Seo } from './Seo'
 import { Analytics } from './Analytics'
 import { useLanguage } from '../i18n/LanguageContext'
+import { detectLangFromPath, normalizePath } from '../i18n/routes'
 
 export function Layout() {
   const location = useLocation()
-  const { lang } = useLanguage()
+  const { lang, setLang } = useLanguage()
+  const path = normalizePath(location.pathname)
+
+  useEffect(() => {
+    const fromPath = detectLangFromPath(path)
+    if (fromPath && fromPath !== lang) {
+      setLang(fromPath)
+    }
+  }, [path, lang, setLang])
 
   return (
     <>
       <a className="skip-link" href="#main">
         {lang === 'tr' ? 'İçeriğe geç' : 'Skip to content'}
       </a>
-      <Seo path={location.pathname === '/' ? '/' : location.pathname} />
+      <Seo path={path} />
       <Analytics />
       <CursorGlow />
       <PageWipe />
       <Header />
       <AnimatePresence mode="wait">
-        <PageTransition key={location.pathname}>
+        <PageTransition key={path}>
           <main id="main" className="page-main" tabIndex={-1}>
             <Outlet />
           </main>

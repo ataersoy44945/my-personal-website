@@ -5,10 +5,12 @@ import { ProjectCover } from '../components/ProjectCover'
 import { Seo } from '../components/Seo'
 import { projects } from '../data/projects'
 import { useLanguage } from '../i18n/LanguageContext'
+import { useLocalizedPath } from '../hooks/useLocalizedPath'
 
 export function ProjectDetailPage() {
   const { id } = useParams()
   const { lang, t } = useLanguage()
+  const path = useLocalizedPath()
   const project = projects.find((p) => p.id === id)
 
   if (!project) {
@@ -20,7 +22,7 @@ export function ProjectDetailPage() {
           description={t.projects.notFoundDesc}
         />
         <p className="project-detail-back">
-          <Link to="/projeler">{t.projects.back}</Link>
+          <Link to={path('projects')}>{t.projects.back}</Link>
         </p>
       </section>
     )
@@ -35,10 +37,10 @@ export function ProjectDetailPage() {
       <Seo
         title={project.title}
         description={project.description[lang]}
-        path={`/projeler/${project.id}`}
+        path={path('projects', project.id)}
       />
       <p className="project-detail-back">
-        <Link to="/projeler">{t.projects.back}</Link>
+        <Link to={path('projects')}>{t.projects.back}</Link>
       </p>
 
       <motion.div
@@ -160,7 +162,7 @@ export function ProjectDetailPage() {
             {related.map((item) => (
               <Link
                 key={item.id}
-                to={`/projeler/${item.id}`}
+                to={path('projects', item.id)}
                 className="project-related-card"
               >
                 <strong>{item.title}</strong>

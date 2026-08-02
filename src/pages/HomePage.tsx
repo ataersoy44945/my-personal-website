@@ -6,11 +6,13 @@ import { Marquee } from '../components/Marquee'
 import { LiveBadge } from '../components/LiveBadge'
 import { NowStatus } from '../components/NowStatus'
 import { useLanguage } from '../i18n/LanguageContext'
+import { useLocalizedPath } from '../hooks/useLocalizedPath'
 
 const name = ['Ata', ' ', 'Ersoy'] as const
 
 export function HomePage() {
   const { t } = useLanguage()
+  const path = useLocalizedPath()
   const ambientRef = useRef<HTMLDivElement>(null)
   const brandRef = useRef<HTMLHeadingElement>(null)
 
@@ -124,10 +126,10 @@ export function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <Link className="btn btn-primary btn-shine" to="/projeler">
+              <Link className="btn btn-primary btn-shine" to={path('projects')}>
                 {t.home.ctaProjects}
               </Link>
-              <Link className="btn btn-ghost" to="/yayin">
+              <Link className="btn btn-ghost" to={path('stream')}>
                 {t.home.ctaStream}
               </Link>
             </motion.div>
@@ -206,7 +208,7 @@ export function HomePage() {
         <div className="explore-grid">
           {exploreItems.map((item, index) => (
             <motion.div
-              key={item.to}
+              key={item.route}
               initial={{ opacity: 0, y: 22, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -214,7 +216,7 @@ export function HomePage() {
             >
               <Link
                 className="explore-card card-glow spotlight-card"
-                to={item.to}
+                to={path(item.route)}
                 onMouseMove={(e) => {
                   const el = e.currentTarget
                   const rect = el.getBoundingClientRect()
