@@ -24,6 +24,11 @@ function absUrl(pathname) {
 }
 
 function jsonLd(lang) {
+  const description =
+    lang === 'tr'
+      ? 'Ata Ersoy — İstanbul Kültür Üniversitesi Bilgisayar Programcılığı mezunu, oyun geliştirici ve FatalStroke Live yayıncısı. Resmi site: ataersoy.com.'
+      : 'Ata Ersoy — Computer Programming graduate, game developer, and FatalStroke Live streamer. Official site: ataersoy.com.'
+
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -31,14 +36,18 @@ function jsonLd(lang) {
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
         name: 'Ata Ersoy',
+        alternateName: ['FatalStroke', 'FatalStroke Live', 'fatalstrokelive'],
         url: siteUrl,
         inLanguage: ['tr', 'en'],
+        description,
         publisher: { '@id': `${siteUrl}/#person` },
+        about: { '@id': `${siteUrl}/#person` },
       },
       {
         '@type': 'Person',
         '@id': `${siteUrl}/#person`,
         name: 'Ata Ersoy',
+        alternateName: ['FatalStroke', 'FatalStroke Live', 'fatalstrokelive'],
         url: siteUrl,
         image: 'https://avatars.githubusercontent.com/u/249717574?v=4',
         email: 'ataersoy1234@hotmail.com',
@@ -46,14 +55,42 @@ function jsonLd(lang) {
           lang === 'tr'
             ? 'Oyun geliştirici & yayıncı'
             : 'Game developer & streamer',
+        description,
+        homeLocation: {
+          '@type': 'Place',
+          name: lang === 'tr' ? 'İstanbul' : 'Istanbul',
+        },
+        alumniOf: {
+          '@type': 'CollegeOrUniversity',
+          name:
+            lang === 'tr'
+              ? 'İstanbul Kültür Üniversitesi'
+              : 'Istanbul Kultur University',
+        },
+        brand: {
+          '@type': 'Brand',
+          name: 'FatalStroke Live',
+          url: 'https://fatalstroke.com',
+        },
         sameAs,
         knowsAbout: [
           'Game Development',
+          'Oyun geliştirme',
           'React',
           'TypeScript',
           'Next.js',
           'Streaming',
+          'FatalStroke Live',
         ],
+        mainEntityOfPage: siteUrl,
+      },
+      {
+        '@type': 'ProfilePage',
+        '@id': `${siteUrl}/#profilepage`,
+        url: siteUrl,
+        name: 'Ata Ersoy | Oyun Geliştirici & FatalStroke Live',
+        mainEntity: { '@id': `${siteUrl}/#person` },
+        inLanguage: ['tr', 'en'],
       },
     ],
   }

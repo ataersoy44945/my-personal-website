@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
+import { brandSeo, buildSiteJsonLd } from '../data/seo'
 import { site } from '../data/site'
-import { socials } from '../data/socials'
 import { useLanguage } from '../i18n/LanguageContext'
 import { alternatePaths, normalizePath } from '../i18n/routes'
 
@@ -35,48 +35,21 @@ function upsertJsonLd(id: string, data: unknown) {
   el.textContent = JSON.stringify(data)
 }
 
-function buildJsonLd(lang: 'tr' | 'en') {
-  const sameAs = socials.map((s) => s.href)
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebSite',
-        '@id': `${site.canonicalUrl}/#website`,
-        name: site.name,
-        url: site.canonicalUrl,
-        inLanguage: ['tr', 'en'],
-        publisher: { '@id': `${site.canonicalUrl}/#person` },
-      },
-      {
-        '@type': 'Person',
-        '@id': `${site.canonicalUrl}/#person`,
-        name: site.name,
-        url: site.canonicalUrl,
-        image: site.avatarUrl,
-        email: site.email,
-        jobTitle:
-          lang === 'tr'
-            ? 'Oyun geliştirici & yayıncı'
-            : 'Game developer & streamer',
-        sameAs,
-        knowsAbout: [
-          'Game Development',
-          'React',
-          'TypeScript',
-          'Next.js',
-          'Streaming',
-        ],
-      },
-    ],
-  }
-}
-
 export function Seo({ title, description, path = '/' }: SeoProps) {
   const { lang, t } = useLanguage()
   const cleanPath = normalizePath(path)
-  const fullTitle = title ? `${title} · ${site.name}` : `${site.name} — ${t.home.role}`
-  const desc = description ?? t.home.lead
+  const fullTitle = title
+    ? `${title} · ${site.name}`
+    : lang === 'tr'
+      ? brandSeo.titleDefaultTr
+      : brandSeo.titleDefaultEn
+  const desc =
+    description ??
+    (cleanPath === '/'
+      ? lang === 'tr'
+        ? brandSeo.descriptionTr
+        : brandSeo.descriptionEn
+      : t.home.lead)
   const url = `${site.canonicalUrl}${cleanPath === '/' ? '/' : cleanPath}`
   const alts = alternatePaths(cleanPath)
 
@@ -98,10 +71,13 @@ export function Seo({ title, description, path = '/' }: SeoProps) {
     }
 
     setMeta('meta[name="description"]', 'content', desc)
+    setMeta('meta[name="keywords"]', 'content', brandSeo.keywords.join(', '))
+    setMeta('meta[name="author"]', 'content', site.name)
     setMeta('meta[property="og:title"]', 'content', fullTitle)
     setMeta('meta[property="og:description"]', 'content', desc)
     setMeta('meta[property="og:url"]', 'content', url)
     setMeta('meta[property="og:type"]', 'content', 'website')
+    setMeta('meta[property="og:site_name"]', 'content', site.name)
     setMeta('meta[property="og:image"]', 'content', `${site.canonicalUrl}/og.png`)
     setMeta('meta[property="og:locale"]', 'content', lang === 'tr' ? 'tr_TR' : 'en_US')
     setMeta('meta[name="twitter:card"]', 'content', 'summary_large_image')
@@ -118,7 +94,7 @@ export function Seo({ title, description, path = '/' }: SeoProps) {
       'x-default',
     )
 
-    upsertJsonLd('json-ld-site', buildJsonLd(lang))
+    upsertJsonLd('json-ld-site', buildSiteJsonLd(lang))
   }, [fullTitle, desc, url, lang, alts.tr, alts.en])
 
   return null
