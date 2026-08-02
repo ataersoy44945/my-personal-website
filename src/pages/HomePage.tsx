@@ -5,55 +5,57 @@ import { exploreItems } from '../data/explore'
 export function HomePage() {
   return (
     <>
-      <section className="hero shell">
-        <div className="hero-content">
-          <motion.span
-            className="eyebrow"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-          >
-            Portfolyo
-          </motion.span>
-          <motion.h1
-            className="hero-brand"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.05 }}
-          >
-            Ata <em>Ersoy</em>
-          </motion.h1>
-          <motion.p
-            className="hero-role"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            Yazılım geliştirici &amp; yayıncı
-          </motion.p>
-          <motion.p
-            className="hero-lead"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.16 }}
-          >
-            İstanbul Kültür Üniversitesi Bilgisayar Programcılığı öğrencisiyim.
-            Web ve yazılım projeleri geliştiriyor, Kick üzerinden{' '}
-            <strong>FatalStroke Live</strong> olarak yayın açıyorum.
-          </motion.p>
-          <motion.div
-            className="hero-actions"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.22 }}
-          >
-            <Link className="btn btn-primary" to="/projeler">
-              Projeleri gör
-            </Link>
-            <Link className="btn btn-ghost" to="/yayin">
-              Yayına bak
-            </Link>
-          </motion.div>
+      <section className="hero">
+        <div className="shell hero-inner">
+          <div className="hero-content">
+            <motion.span
+              className="eyebrow"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45 }}
+            >
+              Portfolyo
+            </motion.span>
+            <motion.h1
+              className="hero-brand"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.05 }}
+            >
+              Ata <em>Ersoy</em>
+            </motion.h1>
+            <motion.p
+              className="hero-role"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              Yazılım geliştirici &amp; yayıncı
+            </motion.p>
+            <motion.p
+              className="hero-lead"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.16 }}
+            >
+              İstanbul Kültür Üniversitesi Bilgisayar Programcılığı öğrencisiyim.
+              Web ve yazılım projeleri geliştiriyor, Kick üzerinden{' '}
+              <strong>FatalStroke Live</strong> olarak yayın açıyorum.
+            </motion.p>
+            <motion.div
+              className="hero-actions"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.22 }}
+            >
+              <Link className="btn btn-primary" to="/projeler">
+                Projeleri gör
+              </Link>
+              <Link className="btn btn-ghost" to="/yayin">
+                Yayına bak
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 
