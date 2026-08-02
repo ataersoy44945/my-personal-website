@@ -344,7 +344,7 @@ img {
   min-height: calc(100svh - 4rem);
   display: grid;
   align-items: center;
-  padding: 3.5rem 0 4rem;
+  padding: 2.5rem 0 3rem;
   overflow: hidden;
   isolation: isolate;
   background:
@@ -899,8 +899,8 @@ img {
   }
 
   .hero {
-    align-items: end;
-    padding: 5rem 0 5.5rem;
+    align-items: center;
+    padding: 3rem 0 4rem;
   }
 }
 
