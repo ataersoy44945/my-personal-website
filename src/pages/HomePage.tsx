@@ -6,14 +6,12 @@ export function HomePage() {
   return (
     <>
       <section className="hero shell">
-        <div className="hero-plane" aria-hidden="true" />
-        <div className="hero-grid" aria-hidden="true" />
         <div className="hero-content">
           <motion.span
             className="eyebrow"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.45 }}
           >
             Portfolyo
           </motion.span>
@@ -21,23 +19,23 @@ export function HomePage() {
             className="hero-brand"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
+            transition={{ duration: 0.55, delay: 0.05 }}
           >
             Ata <em>Ersoy</em>
           </motion.h1>
           <motion.p
             className="hero-role"
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.12 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             Yazılım geliştirici &amp; yayıncı
           </motion.p>
           <motion.p
             className="hero-lead"
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.18 }}
+            transition={{ duration: 0.5, delay: 0.16 }}
           >
             İstanbul Kültür Üniversitesi Bilgisayar Programcılığı öğrencisiyim.
             Web ve yazılım projeleri geliştiriyor, Kick üzerinden{' '}
@@ -45,9 +43,9 @@ export function HomePage() {
           </motion.p>
           <motion.div
             className="hero-actions"
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.24 }}
+            transition={{ duration: 0.5, delay: 0.22 }}
           >
             <Link className="btn btn-primary" to="/projeler">
               Projeleri gör
@@ -74,8 +72,8 @@ export function HomePage() {
               key={item.to}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: index * 0.06 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
             >
               <Link className="explore-card" to={item.to}>
                 <div>
