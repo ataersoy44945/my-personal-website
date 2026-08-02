@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { exploreItems } from '../data/explore'
+import { Marquee } from '../components/Marquee'
+import { LiveBadge } from '../components/LiveBadge'
+import { NowStatus } from '../components/NowStatus'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const name = ['Ata', ' ', 'Ersoy'] as const
 
 export function HomePage() {
+  const { t } = useLanguage()
+
   return (
     <>
       <section className="hero">
@@ -13,18 +19,17 @@ export function HomePage() {
           <span className="hero-orb hero-orb-2" />
           <span className="hero-orb hero-orb-3" />
           <span className="hero-ring" />
+          <span className="hero-scan" />
         </div>
 
-        <div className="shell hero-inner">
+        <div className="shell hero-inner hero-layout">
           <div className="hero-content">
             <motion.div
-              className="hero-badge"
               initial={{ opacity: 0, scale: 0.9, y: 8 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <i />
-              FatalStroke Live
+              <LiveBadge />
             </motion.div>
 
             <motion.span
@@ -33,7 +38,7 @@ export function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.05 }}
             >
-              Portfolyo
+              {t.home.eyebrow}
             </motion.span>
 
             <h1 className="hero-brand">
@@ -45,7 +50,8 @@ export function HomePage() {
                 ) : (
                   <motion.span
                     key={part}
-                    className={part === 'Ersoy' ? 'accent-text' : undefined}
+                    className={part === 'Ersoy' ? 'accent-text glitch' : 'glitch'}
+                    data-text={part}
                     initial={{ opacity: 0, y: 28, rotateX: 40 }}
                     animate={{ opacity: 1, y: 0, rotateX: 0 }}
                     transition={{
@@ -66,7 +72,7 @@ export function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.28 }}
             >
-              Yazılım geliştirici &amp; yayıncı
+              {t.home.role}
             </motion.p>
 
             <motion.p
@@ -75,9 +81,7 @@ export function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.34 }}
             >
-              İstanbul Kültür Üniversitesi Bilgisayar Programcılığı öğrencisiyim.
-              Web ve yazılım projeleri geliştiriyor, Kick üzerinden{' '}
-              <strong>FatalStroke Live</strong> olarak yayın açıyorum.
+              {t.home.lead}
             </motion.p>
 
             <motion.div
@@ -87,13 +91,22 @@ export function HomePage() {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <Link className="btn btn-primary btn-shine" to="/projeler">
-                Projeleri gör
+                {t.home.ctaProjects}
               </Link>
               <Link className="btn btn-ghost" to="/yayin">
-                Yayına bak
+                {t.home.ctaStream}
               </Link>
             </motion.div>
           </div>
+
+          <motion.div
+            className="hero-side"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.35 }}
+          >
+            <NowStatus />
+          </motion.div>
         </div>
 
         <motion.div
@@ -107,6 +120,8 @@ export function HomePage() {
         </motion.div>
       </section>
 
+      <Marquee />
+
       <section className="explore shell">
         <motion.div
           className="explore-head"
@@ -116,10 +131,10 @@ export function HomePage() {
           transition={{ duration: 0.45 }}
         >
           <div>
-            <span className="eyebrow">Keşfet</span>
-            <h2>Portfolyomu incele</h2>
+            <span className="eyebrow">{t.home.exploreEyebrow}</span>
+            <h2>{t.home.exploreTitle}</h2>
           </div>
-          <p className="muted">Aşağıdaki bölümlerden devam et.</p>
+          <p className="muted">{t.home.exploreSub}</p>
         </motion.div>
 
         <div className="explore-grid">
@@ -129,13 +144,28 @@ export function HomePage() {
               initial={{ opacity: 0, y: 22, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: index * 0.07 }}
-              whileHover={{ y: -4 }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
             >
-              <Link className="explore-card card-glow" to={item.to}>
+              <Link
+                className="explore-card card-glow spotlight-card"
+                to={item.to}
+                onMouseMove={(e) => {
+                  const el = e.currentTarget
+                  const rect = el.getBoundingClientRect()
+                  el.style.setProperty(
+                    '--spot-x',
+                    `${((e.clientX - rect.left) / rect.width) * 100}%`,
+                  )
+                  el.style.setProperty(
+                    '--spot-y',
+                    `${((e.clientY - rect.top) / rect.height) * 100}%`,
+                  )
+                }}
+              >
+                <span className="explore-index">0{index + 1}</span>
                 <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
+                  <h3>{t.nav[item.titleKey]}</h3>
+                  <p>{t.explore[item.descriptionKey]}</p>
                 </div>
                 <span className="arrow" aria-hidden="true">
                   →

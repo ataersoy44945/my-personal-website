@@ -1,19 +1,24 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-
-const links = [
-  { to: '/', label: 'Ana Sayfa', end: true },
-  { to: '/hakkimda', label: 'Hakkımda' },
-  { to: '/projeler', label: 'Projeler' },
-  { to: '/stack', label: 'Stack' },
-  { to: '/yayin', label: 'Yayın' },
-  { to: '/iletisim', label: 'İletişim' },
-]
+import { LangSwitch } from './LangSwitch'
+import { LiveBadge } from './LiveBadge'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const location = useLocation()
+  const { t } = useLanguage()
+
+  const links = [
+    { to: '/', label: t.nav.home, end: true },
+    { to: '/hakkimda', label: t.nav.about },
+    { to: '/projeler', label: t.nav.projects },
+    { to: '/stack', label: t.nav.stack },
+    { to: '/yayin', label: t.nav.stream },
+    { to: '/klipler', label: t.nav.clips },
+    { to: '/iletisim', label: t.nav.contact },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -33,7 +38,7 @@ export function Header() {
           Ata Ersoy<span>.</span>
         </NavLink>
 
-        <nav className="nav-links" aria-label="Ana menü">
+        <nav className="nav-links" aria-label="Main">
           {links.map((link) => (
             <NavLink
               key={link.to}
@@ -46,20 +51,24 @@ export function Header() {
           ))}
         </nav>
 
-        <button
-          className="nav-toggle"
-          type="button"
-          aria-label={open ? 'Menüyü kapat' : 'Menüyü aç'}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span />
-        </button>
+        <div className="nav-tools">
+          <LiveBadge compact />
+          <LangSwitch />
+          <button
+            className="nav-toggle"
+            type="button"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span />
+          </button>
+        </div>
       </div>
 
       <nav
         className={`shell mobile-nav${open ? ' open' : ''}`}
-        aria-label="Mobil menü"
+        aria-label="Mobile"
       >
         {links.map((link) => (
           <NavLink

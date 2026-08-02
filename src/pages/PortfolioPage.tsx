@@ -1,13 +1,16 @@
 import { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { PageHeader } from '../components/PageHeader'
+import { ProjectCover } from '../components/ProjectCover'
 import {
   categories,
   projects,
   type ProjectCategory,
 } from '../data/projects'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export function PortfolioPage() {
+  const { lang, t } = useLanguage()
   const [active, setActive] = useState<(typeof categories)[number]>('Tümü')
 
   const filtered = useMemo(() => {
@@ -15,15 +18,20 @@ export function PortfolioPage() {
     return projects.filter((p) => p.category === (active as ProjectCategory))
   }, [active])
 
+  const labelFor = (cat: (typeof categories)[number]) => {
+    if (cat === 'Tümü') return t.projects.all
+    return t.categories[cat]
+  }
+
   return (
     <section className="page shell">
       <PageHeader
-        eyebrow="Projeler"
-        title="GitHub’dan seçilmiş işler."
-        description="Repolarımdaki projeler ve varsa canlı site linkleri. Detay için GitHub’a göz atabilirsin."
+        eyebrow={t.projects.eyebrow}
+        title={t.projects.title}
+        description={t.projects.description}
       />
 
-      <div className="filter-bar" role="tablist" aria-label="Proje filtreleri">
+      <div className="filter-bar" role="tablist" aria-label="Filters">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -33,7 +41,7 @@ export function PortfolioPage() {
             className={`filter-btn${active === cat ? ' active' : ''}`}
             onClick={() => setActive(cat)}
           >
-            {cat}
+            {labelFor(cat)}
           </button>
         ))}
       </div>
@@ -51,12 +59,19 @@ export function PortfolioPage() {
               transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.24) }}
               whileHover={{ y: -5 }}
             >
+              <ProjectCover
+                title={project.title}
+                category={t.categories[project.category]}
+                accent={project.accent}
+                image={project.image}
+              />
+
               <div className="project-top">
                 <div>
                   <h3>{project.title}</h3>
-                  <p>{project.description}</p>
+                  <p>{project.description[lang]}</p>
                 </div>
-                <span className="badge">{project.category}</span>
+                <span className="badge">{t.categories[project.category]}</span>
               </div>
 
               <div className="tag-row">
@@ -69,11 +84,11 @@ export function PortfolioPage() {
 
               <div className="project-actions">
                 <a href={project.github} target="_blank" rel="noreferrer">
-                  GitHub →
+                  {t.projects.github}
                 </a>
                 {project.live ? (
                   <a href={project.live} target="_blank" rel="noreferrer">
-                    Canlı site →
+                    {t.projects.live}
                   </a>
                 ) : null}
               </div>

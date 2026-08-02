@@ -1,33 +1,14 @@
 export type ExploreItem = {
-  title: string
-  description: string
+  titleKey: 'about' | 'projects' | 'stack' | 'stream' | 'clips' | 'contact'
+  descriptionKey: 'about' | 'projects' | 'stack' | 'stream' | 'clips' | 'contact'
   to: string
 }
 
 export const exploreItems: ExploreItem[] = [
-  {
-    title: 'Hakkımda',
-    description: 'Eğitim yolculuğum, ilgi alanlarım ve kim olduğum',
-    to: '/hakkimda',
-  },
-  {
-    title: 'Projeler',
-    description: 'GitHub’daki çalışmalarım ve canlı site linkleri',
-    to: '/projeler',
-  },
-  {
-    title: 'Stack',
-    description: 'Kullandığım teknolojiler, diller ve araçlar',
-    to: '/stack',
-  },
-  {
-    title: 'Yayın',
-    description: 'Kick ve YouTube üzerinden FatalStroke Live',
-    to: '/yayin',
-  },
-  {
-    title: 'İletişim',
-    description: 'Sosyal medya hesaplarım ve bağlantılar',
-    to: '/iletisim',
-  },
+  { titleKey: 'about', descriptionKey: 'about', to: '/hakkimda' },
+  { titleKey: 'projects', descriptionKey: 'projects', to: '/projeler' },
+  { titleKey: 'stack', descriptionKey: 'stack', to: '/stack' },
+  { titleKey: 'stream', descriptionKey: 'stream', to: '/yayin' },
+  { titleKey: 'clips', descriptionKey: 'clips', to: '/klipler' },
+  { titleKey: 'contact', descriptionKey: 'contact', to: '/iletisim' },
 ]

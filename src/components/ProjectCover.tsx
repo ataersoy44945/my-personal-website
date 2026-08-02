@@ -1,0 +1,49 @@
+type ProjectCoverProps = {
+  title: string
+  category: string
+  accent?: string
+  image?: string
+}
+
+export function ProjectCover({
+  title,
+  category,
+  accent = '#ff6a1a',
+  image,
+}: ProjectCoverProps) {
+  const initials = title
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase()
+
+  return (
+    <div
+      className={`project-cover${image ? ' has-image' : ''}`}
+      style={
+        image
+          ? undefined
+          : {
+              background: `
+          radial-gradient(circle at 80% 20%, ${accent}66, transparent 45%),
+          radial-gradient(circle at 15% 85%, ${accent}33, transparent 40%),
+          linear-gradient(145deg, #1c1713, #12100e)
+        `,
+            }
+      }
+      aria-hidden="true"
+    >
+      {image ? (
+        <img src={image} alt="" className="project-cover-img" loading="lazy" />
+      ) : (
+        <>
+          <strong className="project-cover-initials">{initials}</strong>
+          <span className="project-cover-grid" />
+        </>
+      )}
+      <span className="project-cover-cat">{category}</span>
+      <span className="project-cover-shade" />
+    </div>
+  )
+}

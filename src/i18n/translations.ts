@@ -1,0 +1,226 @@
+export type Lang = 'tr' | 'en'
+
+export const translations = {
+  tr: {
+    nav: {
+      home: 'Ana Sayfa',
+      about: 'Hakkımda',
+      projects: 'Projeler',
+      stack: 'Stack',
+      stream: 'Yayın',
+      clips: 'Klipler',
+      contact: 'İletişim',
+    },
+    home: {
+      eyebrow: 'Portfolyo',
+      role: 'Yazılım geliştirici & yayıncı',
+      lead:
+        'İstanbul Kültür Üniversitesi Bilgisayar Programcılığı öğrencisiyim. Web ve yazılım projeleri geliştiriyor, Kick üzerinden FatalStroke Live olarak yayın açıyorum.',
+      ctaProjects: 'Projeleri gör',
+      ctaStream: 'Yayına bak',
+      exploreEyebrow: 'Keşfet',
+      exploreTitle: 'Portfolyomu incele',
+      exploreSub: 'Aşağıdaki bölümlerden devam et.',
+    },
+    about: {
+      eyebrow: 'Hakkımda',
+      title: 'Kod, ürün ve yayın.',
+      description:
+        'Teknolojiyle üretmeyi ve canlı yayında paylaşmayı bir arada yürütüyorum.',
+      whoTitle: 'Kimim?',
+      whoBody:
+        'Ben Ata Ersoy. İstanbul Kültür Üniversitesi’nde Bilgisayar Programcılığı okuyorum. Web siteleri, mobil uygulamalar ve nesne tabanlı yazılım sistemleri üzerinde çalışıyorum. Aynı zamanda FatalStroke Live adıyla Kick ve YouTube’da yayın açıyorum.',
+      whatTitle: 'Ne yapıyorum?',
+      whatBody:
+        'GitHub’da kuyumculuk sitelerinden yönetim sistemlerine, AI chatbot’tan oyun kimliği sitelerine kadar çeşitli projeler geliştiriyorum. Amacım temiz arayüzler, çalışan ürünler ve sürdürülebilir kod üretmek.',
+      education: 'Eğitim',
+      educationValue: 'İstanbul Kültür Üniversitesi — Bilgisayar Programcılığı',
+      focus: 'Odak',
+      focusValue: 'Web geliştirme, mobil, OOP, yayıncılık',
+      stream: 'Yayın',
+      streamValue: 'Kick / YouTube — fatalstrokelive',
+    },
+    projects: {
+      eyebrow: 'Projeler',
+      title: 'GitHub’dan seçilmiş işler.',
+      description:
+        'Repolarımdaki projeler ve varsa canlı site linkleri. Detay için GitHub’a göz atabilirsin.',
+      all: 'Tümü',
+      live: 'Canlı site →',
+      github: 'GitHub →',
+    },
+    stack: {
+      eyebrow: 'Stack',
+      title: 'Araç çantam.',
+      description: 'Projelerde kullandığım diller, framework’ler ve çalışma alanlarım.',
+    },
+    stream: {
+      eyebrow: 'Yayın',
+      title: 'FatalStroke Live.',
+      description: 'Kick’te canlı yayındayım. YouTube’da da içerik paylaşıyorum.',
+      ready: 'Canlıya hazır',
+      liveNow: 'Şu an canlı',
+      offline: 'Şu an offline',
+      body:
+        'Oyun, sohbet ve canlı içerik. Yayınlarımı Kick hesabımdan takip edebilir, arşiv ve videolar için YouTube’a uğrayabilirsin.',
+      watchKick: 'Kick’te izle',
+      youtube: 'YouTube',
+      site: 'fatalstroke.com',
+    },
+    clips: {
+      eyebrow: 'Klipler',
+      title: 'Yayın & içerik.',
+      description: 'Kick, YouTube ve marka sitesine hızlı erişim.',
+      open: 'Aç →',
+      playerTitle: 'Kick oynatıcı',
+    },
+    contact: {
+      eyebrow: 'İletişim',
+      title: 'Birlikte çalışalım.',
+      description:
+        'Proje, iş birliği veya yayın için formdan ya da sosyal hesaplardan ulaşabilirsin.',
+      name: 'Adın',
+      email: 'E-posta',
+      message: 'Mesajın',
+      send: 'Gönder',
+      sending: 'Gönderiliyor…',
+      success: 'Mesajın alındı — en kısa sürede döneceğim.',
+      error: 'Gönderilemedi. E-posta veya Discord’dan yazabilirsin.',
+      orSocials: 'Sosyal hesaplar',
+    },
+    status: {
+      title: 'Şu an',
+      live: 'CANLI',
+      offline: 'Offline',
+      onKick: 'Kick’te yayında',
+      watching: 'İzlemek için tıkla',
+    },
+    explore: {
+      about: 'Eğitim yolculuğum, ilgi alanlarım ve kim olduğum',
+      projects: 'GitHub’daki çalışmalarım ve canlı site linkleri',
+      stack: 'Kullandığım teknolojiler, diller ve araçlar',
+      stream: 'Kick ve YouTube üzerinden FatalStroke Live',
+      clips: 'Yayın klipleri, Kick ve YouTube içerikleri',
+      contact: 'Sosyal medya hesaplarım ve bağlantılar',
+    },
+    categories: {
+      Web: 'Web',
+      Mobil: 'Mobil',
+      Yazılım: 'Yazılım',
+      AI: 'AI',
+    },
+    footer: '© {year} Ata Ersoy',
+  },
+  en: {
+    nav: {
+      home: 'Home',
+      about: 'About',
+      projects: 'Projects',
+      stack: 'Stack',
+      stream: 'Stream',
+      clips: 'Clips',
+      contact: 'Contact',
+    },
+    home: {
+      eyebrow: 'Portfolio',
+      role: 'Software developer & streamer',
+      lead:
+        'Computer Programming student at Istanbul Kultur University. I build web and software projects and stream as FatalStroke Live on Kick.',
+      ctaProjects: 'See projects',
+      ctaStream: 'Watch stream',
+      exploreEyebrow: 'Explore',
+      exploreTitle: 'Browse my portfolio',
+      exploreSub: 'Jump into a section below.',
+    },
+    about: {
+      eyebrow: 'About',
+      title: 'Code, product, stream.',
+      description:
+        'I build with technology and share it live on stream.',
+      whoTitle: 'Who am I?',
+      whoBody:
+        'I’m Ata Ersoy. I study Computer Programming at Istanbul Kultur University. I work on websites, mobile apps, and OOP systems — and stream as FatalStroke Live on Kick and YouTube.',
+      whatTitle: 'What I do',
+      whatBody:
+        'On GitHub you’ll find jewelry brand sites, management systems, AI chatbots, and gaming identity sites. I aim for clean UI, working products, and sustainable code.',
+      education: 'Education',
+      educationValue: 'Istanbul Kultur University — Computer Programming',
+      focus: 'Focus',
+      focusValue: 'Web, mobile, OOP, streaming',
+      stream: 'Stream',
+      streamValue: 'Kick / YouTube — fatalstrokelive',
+    },
+    projects: {
+      eyebrow: 'Projects',
+      title: 'Selected work from GitHub.',
+      description:
+        'Repos and live links when available. Dive into GitHub for details.',
+      all: 'All',
+      live: 'Live site →',
+      github: 'GitHub →',
+    },
+    stack: {
+      eyebrow: 'Stack',
+      title: 'My toolkit.',
+      description: 'Languages, frameworks, and focus areas I use in projects.',
+    },
+    stream: {
+      eyebrow: 'Stream',
+      title: 'FatalStroke Live.',
+      description: 'I go live on Kick. YouTube has VODs and more.',
+      ready: 'Ready to go live',
+      liveNow: 'Live now',
+      offline: 'Currently offline',
+      body:
+        'Games, chat, and live content. Follow on Kick — check YouTube for archives.',
+      watchKick: 'Watch on Kick',
+      youtube: 'YouTube',
+      site: 'fatalstroke.com',
+    },
+    clips: {
+      eyebrow: 'Clips',
+      title: 'Stream & content.',
+      description: 'Quick access to Kick, YouTube, and the brand site.',
+      open: 'Open →',
+      playerTitle: 'Kick player',
+    },
+    contact: {
+      eyebrow: 'Contact',
+      title: "Let's work together.",
+      description:
+        'Reach out via the form or socials for projects, collabs, or streams.',
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+      send: 'Send',
+      sending: 'Sending…',
+      success: 'Got it — I’ll get back to you soon.',
+      error: 'Couldn’t send. Try email or Discord instead.',
+      orSocials: 'Socials',
+    },
+    status: {
+      title: 'Now',
+      live: 'LIVE',
+      offline: 'Offline',
+      onKick: 'Live on Kick',
+      watching: 'Click to watch',
+    },
+    explore: {
+      about: 'My path, interests, and who I am',
+      projects: 'GitHub work and live site links',
+      stack: 'Technologies, languages, and tools',
+      stream: 'FatalStroke Live on Kick & YouTube',
+      clips: 'Stream clips, Kick and YouTube content',
+      contact: 'Socials and ways to reach me',
+    },
+    categories: {
+      Web: 'Web',
+      Mobil: 'Mobile',
+      Yazılım: 'Software',
+      AI: 'AI',
+    },
+    footer: '© {year} Ata Ersoy',
+  },
+} as const
+
+export type Translation = (typeof translations)[Lang]

@@ -4,12 +4,24 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import { CursorGlow } from './CursorGlow'
 import { PageTransition } from './PageTransition'
+import { Seo } from './Seo'
+
+const pathMeta: Record<string, string> = {
+  '/': '/',
+  '/hakkimda': '/hakkimda',
+  '/projeler': '/projeler',
+  '/stack': '/stack',
+  '/yayin': '/yayin',
+  '/klipler': '/klipler',
+  '/iletisim': '/iletisim',
+}
 
 export function Layout() {
   const location = useLocation()
 
   return (
     <>
+      <Seo path={pathMeta[location.pathname] ?? '/'} />
       <CursorGlow />
       <Header />
       <AnimatePresence mode="wait">

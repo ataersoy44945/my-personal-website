@@ -1,8 +1,15 @@
 import { motion } from 'framer-motion'
 import { PageHeader } from '../components/PageHeader'
+import { Equalizer } from '../components/Equalizer'
+import { LiveBadge } from '../components/LiveBadge'
 import { socials, streamLinks } from '../data/socials'
+import { site } from '../data/site'
+import { useKickLiveState } from '../hooks/KickLiveContext'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export function StreamPage() {
+  const { lang, t } = useLanguage()
+  const { isLive } = useKickLiveState()
   const channels = socials.filter((s) =>
     ['kick', 'youtube', 'instagram'].includes(s.id),
   )
@@ -10,25 +17,33 @@ export function StreamPage() {
   return (
     <section className="page shell">
       <PageHeader
-        eyebrow="Yayın"
-        title="FatalStroke Live."
-        description="Kick’te canlı yayındayım. YouTube’da da içerik paylaşıyorum."
+        eyebrow={t.stream.eyebrow}
+        title={t.stream.title}
+        description={t.stream.description}
       />
 
       <motion.div
-        className="stream-hero card-glow"
+        className="stream-hero card-glow spotlight-card"
         initial={{ opacity: 0, y: 18, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5 }}
+        onMouseMove={(e) => {
+          const el = e.currentTarget
+          const rect = el.getBoundingClientRect()
+          el.style.setProperty(
+            '--spot-x',
+            `${((e.clientX - rect.left) / rect.width) * 100}%`,
+          )
+          el.style.setProperty(
+            '--spot-y',
+            `${((e.clientY - rect.top) / rect.height) * 100}%`,
+          )
+        }}
       >
-        <span className="live-dot">
-          <i /> Canlıya hazır
-        </span>
-        <h2 className="accent-text">fatalstrokelive</h2>
-        <p>
-          Oyun, sohbet ve canlı içerik. Yayınlarımı Kick hesabımdan takip
-          edebilir, arşiv ve videolar için YouTube’a uğrayabilirsin.
-        </p>
+        {isLive ? <Equalizer /> : null}
+        <LiveBadge />
+        <h2 className="accent-text">{site.handle}</h2>
+        <p>{t.stream.body}</p>
         <div className="stream-actions">
           <a
             className="btn btn-primary btn-shine"
@@ -36,7 +51,7 @@ export function StreamPage() {
             target="_blank"
             rel="noreferrer"
           >
-            Kick’te izle
+            {t.stream.watchKick}
           </a>
           <a
             className="btn btn-ghost"
@@ -44,7 +59,7 @@ export function StreamPage() {
             target="_blank"
             rel="noreferrer"
           >
-            YouTube
+            {t.stream.youtube}
           </a>
           <a
             className="btn btn-ghost"
@@ -52,10 +67,21 @@ export function StreamPage() {
             target="_blank"
             rel="noreferrer"
           >
-            fatalstroke.com
+            {t.stream.site}
           </a>
         </div>
       </motion.div>
+
+      {isLive ? (
+        <div className="kick-embed card-glow">
+          <iframe
+            title="Kick Live"
+            src={`https://player.kick.com/${site.handle}`}
+            allowFullScreen
+            loading="lazy"
+          />
+        </div>
+      ) : null}
 
       <div className="stream-channels">
         {channels.map((channel, index) => (
@@ -73,7 +99,7 @@ export function StreamPage() {
           >
             <strong>{channel.label}</strong>
             <span>{channel.handle}</span>
-            <span>{channel.description}</span>
+            <span>{channel.description[lang]}</span>
           </motion.a>
         ))}
       </div>
