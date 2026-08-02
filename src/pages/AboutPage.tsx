@@ -22,13 +22,17 @@ export function AboutPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
         >
-          <img
-            src={site.avatarUrl}
-            alt={site.name}
-            width={320}
-            height={320}
-            loading="lazy"
-          />
+          <picture>
+            <source srcSet={site.aboutImage} type="image/webp" />
+            <img
+              src={site.aboutImageFallback}
+              alt={site.name}
+              width={320}
+              height={320}
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
           <div className="about-photo-meta">
             <strong>{site.name}</strong>
             <span>@{site.handle}</span>

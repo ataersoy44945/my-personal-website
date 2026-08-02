@@ -4,6 +4,7 @@ export type Project = {
   id: string
   title: string
   description: { tr: string; en: string }
+  longDescription?: { tr: string; en: string }
   category: ProjectCategory
   tags: string[]
   github: string
@@ -21,6 +22,10 @@ export const projects: Project[] = [
       tr: 'Datcia kuyumculuk markası için modern web sitesi. Next.js ve TypeScript ile ürün odaklı arayüz.',
       en: 'Modern jewelry brand website for Datcia. Product-focused UI with Next.js and TypeScript.',
     },
+    longDescription: {
+      tr: 'Markanın ürün vitrinini öne çıkaran, hızlı ve mobil uyumlu bir vitrin. Tipografi, ürün kartları ve gezinme akışı kuyumculuk estetiğine göre kurgulandı.',
+      en: 'A fast, mobile-friendly storefront that puts product display first. Typography, product cards, and navigation follow a jewelry-brand aesthetic.',
+    },
     category: 'Web',
     tags: ['Next.js', 'TypeScript', 'Tailwind'],
     github: 'https://github.com/ataersoy44945/Datcia-Site',
@@ -34,6 +39,10 @@ export const projects: Project[] = [
     description: {
       tr: 'Oyun ve yayın kimliği için web sitesi. fatalstroke.com üzerinde yayında.',
       en: 'Gaming and stream identity site. Live at fatalstroke.com.',
+    },
+    longDescription: {
+      tr: 'Yayın markasının ana kimlik yüzeyi. Kick / YouTube bağlantıları, görsel dil ve hızlı yüklenen bir landing deneyimi.',
+      en: 'The main identity surface for the stream brand — Kick/YouTube links, visual language, and a fast landing experience.',
     },
     category: 'Web',
     tags: ['JavaScript', 'HTML', 'CSS'],
@@ -50,6 +59,10 @@ export const projects: Project[] = [
       tr: 'Dencha kuyumculuk için App Store odaklı mobil uygulama.',
       en: 'App Store–focused mobile app for Dencha jewelry.',
     },
+    longDescription: {
+      tr: 'React Native ile ürün keşfi ve sepet akışına odaklanan mobil deneyim. Koyu arayüz, altın tonları ve net ürün kartları.',
+      en: 'React Native mobile experience focused on product discovery and cart flow — dark UI, gold accents, clear product cards.',
+    },
     category: 'Mobil',
     tags: ['TypeScript', 'React Native'],
     github:
@@ -64,6 +77,10 @@ export const projects: Project[] = [
     description: {
       tr: 'Hava durumunu sohbet arayüzüyle sunan AI chatbot.',
       en: 'AI chatbot that delivers weather through a chat UI.',
+    },
+    longDescription: {
+      tr: 'Kullanıcı sorularını sohbet balonlarıyla yanıtlayan bir hava durumu asistanı. Tahmin kartları ve sade bir dashboard düzeni.',
+      en: 'A weather assistant that answers in chat bubbles, with forecast cards and a clean dashboard layout.',
     },
     category: 'AI',
     tags: ['Python', 'AI', 'CSS'],

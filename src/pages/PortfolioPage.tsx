@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { PageHeader } from '../components/PageHeader'
 import { ProjectCover } from '../components/ProjectCover'
@@ -31,7 +32,7 @@ export function PortfolioPage() {
         description={t.projects.description}
       />
 
-      <div className="filter-bar" role="tablist" aria-label="Filters">
+      <div className="filter-bar" role="tablist" aria-label={t.projects.filters}>
         {categories.map((cat) => (
           <button
             key={cat}
@@ -59,16 +60,25 @@ export function PortfolioPage() {
               transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.24) }}
               whileHover={{ y: -5 }}
             >
-              <ProjectCover
-                title={project.title}
-                category={t.categories[project.category]}
-                accent={project.accent}
-                image={project.image}
-              />
+              <Link
+                to={`/projeler/${project.id}`}
+                className="project-card-link"
+                aria-label={`${project.title} — ${t.projects.details}`}
+              >
+                <ProjectCover
+                  title={project.title}
+                  category={t.categories[project.category]}
+                  accent={project.accent}
+                  image={project.image}
+                  priority={index < 2}
+                />
+              </Link>
 
               <div className="project-top">
                 <div>
-                  <h3>{project.title}</h3>
+                  <h3>
+                    <Link to={`/projeler/${project.id}`}>{project.title}</Link>
+                  </h3>
                   <p>{project.description[lang]}</p>
                 </div>
                 <span className="badge">{t.categories[project.category]}</span>
@@ -83,6 +93,7 @@ export function PortfolioPage() {
               </div>
 
               <div className="project-actions">
+                <Link to={`/projeler/${project.id}`}>{t.projects.details}</Link>
                 <a href={project.github} target="_blank" rel="noreferrer">
                   {t.projects.github}
                 </a>

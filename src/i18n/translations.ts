@@ -44,10 +44,15 @@ export const translations = {
       eyebrow: 'Projeler',
       title: 'GitHub’dan seçilmiş işler.',
       description:
-        'Repolarımdaki projeler ve varsa canlı site linkleri. Detay için GitHub’a göz atabilirsin.',
+        'Repolarımdaki projeler ve varsa canlı site linkleri. Detay için karta tıkla.',
       all: 'Tümü',
       live: 'Canlı site →',
       github: 'GitHub →',
+      details: 'Detay →',
+      back: '← Tüm projeler',
+      filters: 'Proje filtreleri',
+      notFound: 'Proje bulunamadı.',
+      notFoundDesc: 'Bu proje listede yok veya taşındı.',
     },
     stack: {
       eyebrow: 'Stack',
@@ -73,6 +78,9 @@ export const translations = {
       description: 'Kick, YouTube ve marka sitesine hızlı erişim.',
       open: 'Aç →',
       playerTitle: 'Kick oynatıcı',
+      youtubeEmpty:
+        'Kanalda henüz gömülü video ID’si yok. YouTube’da takip et; video gelince buraya ekleriz.',
+      openChannel: 'YouTube kanalına git',
     },
     contact: {
       eyebrow: 'İletişim',
@@ -87,6 +95,8 @@ export const translations = {
       success: 'Mesajın alındı — en kısa sürede döneceğim.',
       error: 'Gönderilemedi. E-posta veya Discord’dan yazabilirsin.',
       orSocials: 'Sosyal hesaplar',
+      copyDiscord: 'Kullanıcı adını kopyala',
+      copied: 'Kopyalandı!',
     },
     status: {
       title: 'Şu an',
@@ -154,10 +164,15 @@ export const translations = {
       eyebrow: 'Projects',
       title: 'Selected work from GitHub.',
       description:
-        'Repos and live links when available. Dive into GitHub for details.',
+        'Repos and live links when available. Open a card for the case study.',
       all: 'All',
       live: 'Live site →',
       github: 'GitHub →',
+      details: 'Details →',
+      back: '← All projects',
+      filters: 'Project filters',
+      notFound: 'Project not found.',
+      notFoundDesc: 'This project is missing or was moved.',
     },
     stack: {
       eyebrow: 'Stack',
@@ -183,6 +198,9 @@ export const translations = {
       description: 'Quick access to Kick, YouTube, and the brand site.',
       open: 'Open →',
       playerTitle: 'Kick player',
+      youtubeEmpty:
+        'No embedded video IDs yet. Follow on YouTube — we’ll drop embeds here when uploads land.',
+      openChannel: 'Open YouTube channel',
     },
     contact: {
       eyebrow: 'Contact',
@@ -197,6 +215,8 @@ export const translations = {
       success: 'Got it — I’ll get back to you soon.',
       error: 'Couldn’t send. Try email or Discord instead.',
       orSocials: 'Socials',
+      copyDiscord: 'Copy username',
+      copied: 'Copied!',
     },
     status: {
       title: 'Now',

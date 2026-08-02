@@ -3,6 +3,12 @@ type ProjectCoverProps = {
   category: string
   accent?: string
   image?: string
+  priority?: boolean
+}
+
+function toWebp(src: string) {
+  if (src.endsWith('.webp')) return src
+  return src.replace(/\.(jpe?g|png)$/i, '.webp')
 }
 
 export function ProjectCover({
@@ -10,6 +16,7 @@ export function ProjectCover({
   category,
   accent = '#ff6a1a',
   image,
+  priority = false,
 }: ProjectCoverProps) {
   const initials = title
     .split(/\s+/)
@@ -17,6 +24,8 @@ export function ProjectCover({
     .map((w) => w[0])
     .join('')
     .toUpperCase()
+
+  const webp = image ? toWebp(image) : null
 
   return (
     <div
@@ -35,7 +44,18 @@ export function ProjectCover({
       aria-hidden="true"
     >
       {image ? (
-        <img src={image} alt="" className="project-cover-img" loading="lazy" />
+        <picture>
+          {webp && webp !== image ? (
+            <source srcSet={webp} type="image/webp" />
+          ) : null}
+          <img
+            src={image}
+            alt=""
+            className="project-cover-img"
+            loading={priority ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+        </picture>
       ) : (
         <>
           <strong className="project-cover-initials">{initials}</strong>

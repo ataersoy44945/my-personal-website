@@ -7,6 +7,7 @@ import { ClipsPage } from './pages/ClipsPage'
 import { ContactPage } from './pages/ContactPage'
 import { HomePage } from './pages/HomePage'
 import { PortfolioPage } from './pages/PortfolioPage'
+import { ProjectDetailPage } from './pages/ProjectDetailPage'
 import { StackPage } from './pages/StackPage'
 import { StreamPage } from './pages/StreamPage'
 
@@ -20,6 +21,7 @@ export default function App() {
               <Route index element={<HomePage />} />
               <Route path="hakkimda" element={<AboutPage />} />
               <Route path="projeler" element={<PortfolioPage />} />
+              <Route path="projeler/:id" element={<ProjectDetailPage />} />
               <Route path="stack" element={<StackPage />} />
               <Route path="yayin" element={<StreamPage />} />
               <Route path="klipler" element={<ClipsPage />} />

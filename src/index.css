@@ -74,8 +74,44 @@ a {
 
 button,
 input,
-select {
+select,
+textarea {
   font: inherit;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 1000;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.btn:focus-visible,
+.filter-btn:focus-visible,
+.nav-links a:focus-visible,
+.contact-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.page-main:focus {
+  outline: none;
 }
 
 img {
@@ -1826,6 +1862,117 @@ img {
   aspect-ratio: 16 / 9;
   border: 0;
   min-height: 280px;
+}
+
+.yt-grid {
+  display: grid;
+  gap: 1rem;
+  max-width: 980px;
+  margin: 0 auto 1.25rem;
+}
+
+.yt-channel-cta .yt-cta-body {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+
+.yt-channel-cta .yt-cta-body p {
+  margin: 0;
+  max-width: 36ch;
+  color: var(--muted);
+}
+
+.clip-inline-embed {
+  margin: 0.5rem 0 0;
+  border-radius: 12px;
+}
+
+.contact-card-btn {
+  width: 100%;
+  cursor: pointer;
+  text-align: inherit;
+  color: inherit;
+  appearance: none;
+}
+
+.project-card-link {
+  display: block;
+}
+
+.project-card h3 a:hover {
+  color: var(--accent-soft);
+}
+
+.project-detail-back {
+  max-width: 980px;
+  margin: 0 auto 1.25rem;
+  text-align: left;
+}
+
+.project-detail-back a {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.project-detail-back a:hover {
+  color: var(--accent);
+}
+
+.project-detail {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.project-detail-cover {
+  border-radius: calc(var(--radius) + 4px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.project-detail-cover .project-cover {
+  min-height: 220px;
+  aspect-ratio: 16 / 9;
+}
+
+.project-detail-body {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.project-detail-body h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+}
+
+.project-detail-lead {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.project-detail-copy {
+  margin: 0;
+  color: var(--ink);
+  opacity: 0.9;
+}
+
+@media (min-width: 800px) {
+  .project-detail {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+
+  .yt-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (min-width: 560px) {

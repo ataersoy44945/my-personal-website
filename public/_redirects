@@ -1,2 +1,2 @@
-/* Netlify SPA fallback */
-/*  /index.html  200
+/api/kick/*  /.netlify/functions/kick?u=:splat  200
+/*    /index.html   200

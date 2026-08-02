@@ -21,31 +21,44 @@ export function ContactForm() {
 
     setStatus('sending')
 
-    if (site.formspreeId) {
-      try {
+    try {
+      if (site.formspreeId) {
         const res = await fetch(`https://formspree.io/f/${site.formspreeId}`, {
           method: 'POST',
           headers: { Accept: 'application/json' },
           body: data,
         })
         if (!res.ok) throw new Error('fail')
-        setStatus('ok')
-        form.reset()
-        return
-      } catch {
-        setStatus('err')
-        return
+      } else {
+        const res = await fetch(`https://formsubmit.co/ajax/${site.email}`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+            _subject: `Portfolio — ${name}`,
+            _template: 'table',
+          }),
+        })
+        if (!res.ok) throw new Error('fail')
       }
-    }
 
-    const subject = encodeURIComponent(`Portfolio — ${name}`)
-    const body = encodeURIComponent(`${message}\n\n— ${name} <${email}>`)
-    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`
-    setStatus('ok')
+      setStatus('ok')
+      form.reset()
+    } catch {
+      const subject = encodeURIComponent(`Portfolio — ${name}`)
+      const body = encodeURIComponent(`${message}\n\n— ${name} <${email}>`)
+      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`
+      setStatus('ok')
+    }
   }
 
   return (
-    <form className="contact-form card-glow" onSubmit={onSubmit}>
+    <form className="contact-form card-glow" onSubmit={onSubmit} noValidate>
       <label>
         <span>{t.contact.name}</span>
         <input name="name" type="text" required autoComplete="name" />
@@ -65,8 +78,8 @@ export function ContactForm() {
       >
         {status === 'sending' ? t.contact.sending : t.contact.send}
       </button>
-      {status === 'ok' ? <p className="form-ok">{t.contact.success}</p> : null}
-      {status === 'err' ? <p className="form-err">{t.contact.error}</p> : null}
+      {status === 'ok' ? <p className="form-ok" role="status">{t.contact.success}</p> : null}
+      {status === 'err' ? <p className="form-err" role="alert">{t.contact.error}</p> : null}
     </form>
   )
 }

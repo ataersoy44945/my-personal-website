@@ -5,28 +5,25 @@ import { Footer } from './Footer'
 import { CursorGlow } from './CursorGlow'
 import { PageTransition } from './PageTransition'
 import { Seo } from './Seo'
-
-const pathMeta: Record<string, string> = {
-  '/': '/',
-  '/hakkimda': '/hakkimda',
-  '/projeler': '/projeler',
-  '/stack': '/stack',
-  '/yayin': '/yayin',
-  '/klipler': '/klipler',
-  '/iletisim': '/iletisim',
-}
+import { Analytics } from './Analytics'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export function Layout() {
   const location = useLocation()
+  const { lang } = useLanguage()
 
   return (
     <>
-      <Seo path={pathMeta[location.pathname] ?? '/'} />
+      <a className="skip-link" href="#main">
+        {lang === 'tr' ? 'İçeriğe geç' : 'Skip to content'}
+      </a>
+      <Seo path={location.pathname === '/' ? '/' : location.pathname} />
+      <Analytics />
       <CursorGlow />
       <Header />
       <AnimatePresence mode="wait">
         <PageTransition key={location.pathname}>
-          <main className="page-main">
+          <main id="main" className="page-main" tabIndex={-1}>
             <Outlet />
           </main>
         </PageTransition>

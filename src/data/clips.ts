@@ -8,6 +8,10 @@ export type Clip = {
   youtubeId?: string
 }
 
+/**
+ * Kanalında video yayınladığında youtubeId alanını doldur.
+ * Örn: youtubeId: 'dQw4w9WgXcQ'
+ */
 export const clips: Clip[] = [
   {
     id: 'kick-live',
@@ -48,4 +52,8 @@ export const clips: Clip[] = [
     },
     href: 'https://fatalstroke.com',
   },
+]
+
+export const featuredYoutubeIds: string[] = [
+  // Video yükleyince ID ekle: 'xxxxxxxxxxx'
 ]
